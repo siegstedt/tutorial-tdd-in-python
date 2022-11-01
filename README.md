@@ -1,10 +1,16 @@
-# Tutorial: Test-Driven Development in Python
+# Tutorial on Test-Driven Development in Python
 
-In this exercises, we will implement the function convert_to_int() using Test-Driven Development (TDD). In TDD, we write the tests first and implement the function later.
+Test Driven Development (TDD) is a practice for writing code with confidence and producing predictable outcomes. In TDD, we follow the Red-Green-Refactor workflow, hence, we write the tests first and implement the function later.
 
-## Organise the test cases
+In practical terms, TDD is a skill. And, just like learning to swim or ride a bike, writing code in a test-driven style is something that needs to be learned. 
 
-Using pytest, it is recommended to integrate a **tests directory** at the same level as your package's directory. Below is the directory tree we will set up.
+In this exercises, we will apply this technique to implement a simple function that converts a string with digits and commas into integers, i.e. convert_to_int().
+
+## Organise the test suite in pytest
+
+There are many Python libraries for writing unit tests such as pytest, unittest, nosetests, and doctest. We will use pytest, because pytest has all essential features, is easiest to use, and is the most popular testing library in Python.
+
+Using pytest, it is recommended to integrate a **tests directory** at the same level as your package's directory. Below is the directory tree we will set up. 
 
 ```bash
 .
@@ -29,7 +35,7 @@ def convert_to_int():
 
 The tests are stored in the folder called tests. pytest will now automatically find all test scripts stored in this directory.
 
-**Test scripts** are to be defined with the prefix "test_". In each script, we organise our tests in test classes and test functions.
+**Test scripts** are to be defined with the prefix "test_". When pytest sees a filename starting with "test_", it understands that this is test module containing unit tests. In each script, we organise our tests in test classes and test functions.
 
 **Test functions** represent a test case. Within a test script, test functions can either stand alone or be a subset of test classes. When setting up a larger number of test cases, or test functions, we recommend to group them under test classes.
 
@@ -60,7 +66,19 @@ Normal arguments for convert_to_int() are integer strings with comma as thousand
 | "2,081" | 2081 |
 | "1,034,891" | 1034891 |
 
-Since the convert_to_int() function does not process anything yet, any test will result in an error. But we will use it in the tests anyway. That's how TDD works.
+## Write unit tests with pytest
+
+A unit test is written as a Python function, whose name starts with a "test_", just like the test module. This way, pytest can tell that it is a unit test and not an ordinary function.
+
+A unit test usually corresponds to exactly one set of test arguments and return values. The unit test checks whether the function **produces the expected return value when called on this particular argument**.
+
+The actual check is done via an assert statement, and every test must contain one.
+
+The assert statement has a required first argument, which can be **any boolean expression**. If the expression is True, the assert statement passes, giving us a blank output. If the expression is False, it raises an **AssertionError**.
+
+If you want to write a specific, more contextual assertion error message, you can add a custom string after the assert statement.
+
+Go ahead and write the tests. Find an exemplary implementation below. Since the convert_to_int() function does not process anything yet, any test will result in an error. But we will use it in the tests anyway. That's how TDD works.
 
 ```python
 # tests/test_converters.py
@@ -79,6 +97,7 @@ class TestConvertToInt(object):
         actual = convert_to_int("2,081")
         message = f"Expected: {expected}, Actual: {actual}"
         assert actual == expected, message
+
     def test_with_two_commas(self):    
         expected = 1034891
         actual = convert_to_int("1,034,891")
@@ -88,7 +107,7 @@ class TestConvertToInt(object):
 
 ## Implement basic functionality
 
-Now, we can go ahead and try ourselves in implementing this basic functionality.
+Following the Red-Green-Refactor workflow, we have taken the first successful step in producing a failing test. Now, we can go ahead writing just enough code to make our function pass the test.
 
 We expect a string value that includes some digits and commas. We want to split up the string by the commas. Then, we join the separate parts and convert the string into an integer.
 
@@ -187,4 +206,12 @@ In this example, pytest will parse through our test cases and only run the test 
 
 ## Wrap up
 
-That's it! Well done!
+That's it! Well done. Every start into a new practice takes a first step. Congratulations, you have just accomplished your first well-tested function with pytest in a test driven way.
+
+Continue learning about the Test-Driven Development. For instance, consider looking up the following topics.
+
+- Benefits and Challenges in Testing
+- Three Steps in Test-Driven Development
+- Types of Unit Tests and Test Arguments
+- How to Write Unit Tests for Existing Code
+- What Mistakes to Avoid with Test-Driven Development

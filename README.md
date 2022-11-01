@@ -1,6 +1,6 @@
-# Tutorial: Test Driven Development in Python
+# Tutorial: Test-Driven Development in Python
 
-In this exercises, we will implement the function convert_to_int() using Test Driven Development (TDD). In TDD, we write the tests first and implement the function later.
+In this exercises, we will implement the function convert_to_int() using Test-Driven Development (TDD). In TDD, we write the tests first and implement the function later.
 
 ## Organise the test cases
 

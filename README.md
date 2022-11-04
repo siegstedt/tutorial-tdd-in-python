@@ -1,8 +1,10 @@
 # Tutorial on Test-Driven Development in Python
 
+## Introduction
+
 Test Driven Development (TDD) is a practice for writing code with confidence and producing predictable outcomes. In TDD, we follow the Red-Green-Refactor workflow, hence, we write the tests first and implement the function later.
 
-In practical terms, TDD is a skill. And, just like learning to swim or ride a bike, writing code in a test-driven style is something that needs to be learned. 
+In practical terms, TDD is a skill. And, just like learning to swim or ride a bike, writing code in a test-driven style is something that needs to be learned.
 
 In this exercises, we will apply this technique to implement a simple function that converts a string with digits and commas into integers, i.e. convert_to_int().
 
@@ -109,14 +111,12 @@ class TestConvertToInt(object):
 
 Following the Red-Green-Refactor workflow, we have taken the first successful step in producing a failing test. Now, we can go ahead writing just enough code to make our function pass the test.
 
-We expect a string value that includes some digits and commas. We want to split up the string by the commas. Then, we join the separate parts and convert the string into an integer.
+We expect a string value that includes some digits and commas. At first, we simply replace the commas and convert the string into an integer.
 
 ```python
 # src/converters.py
-def convert_to_int(integer_string_with_commas: str) -> int:
-    comma_separated_parts = integer_string_with_commas.split(",")
-    integer_string_with_commas = "".join(comma_separated_parts)
-    return int(integer_string_with_commas)
+def convert_to_int(integer_with_commas: str) -> int:
+    return int(integer_with_commas.replace(",",""))
 
 ```
 
@@ -207,6 +207,13 @@ In this example, pytest will parse through our test cases and only run the test 
 ## Wrap up
 
 That's it! Well done. Every start into a new practice takes a first step. Congratulations, you have just accomplished your first well-tested function with pytest in a test driven way.
+
+Let's review your learning.
+
+- Test-Driven Development is a practice that is rooted in the Red-Green-Refactor workflow.
+- It works best if you progress in small iterations to get frequent feedback.
+- Implementing test modules and test cases with pytest is easy to accomplish and can return meaningful test reports.
+- Organizing the test cases in separate units can improve the explicit documentation of your code's expected behaviour.
 
 Continue learning about the Test-Driven Development. For instance, consider looking up the following topics.
 
